@@ -9,11 +9,13 @@ const Cipher = ({ message }) => {
   const GAMMA_THRESHOLD = 70;
   const [text, setText] = React.useState('');
   const [show, setShow] = React.useState(false);
+  const setUpdate = React.useState(0)[1];
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
   const valueRef = React.useRef({});
+
   let buttonPressTimer;
   const handlePress = () => {
     buttonPressTimer = setTimeout(() => setShow(true), 2000);
@@ -71,6 +73,7 @@ const Cipher = ({ message }) => {
         )
           randomCipher(message);
       }
+      setUpdate(valueRef.current.alpha);
     }, 100);
 
     const refreshText = setInterval(() => {
