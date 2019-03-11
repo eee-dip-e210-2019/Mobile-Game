@@ -1,0 +1,33 @@
+:local {
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #222;
+    color: lightgreen;
+    height: 100vh;
+    width: 100vw;
+  }
+  .cipher {
+    height: 80%;
+    width: 90%;
+    display: block;
+    
+    user-select: none;
+  }
+  .note {
+    font-size: 14px;
+  }
+  .debug {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    bottom: 10px;
+    p {
+      opacity: 0.5;
+      color: #444;
+    }
+  }
+}

@@ -1,25 +1,128 @@
 {
+  "main": "./src/index.js",
   "name": "x-form",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+  "license": "MIT",
+  "author": {
+    "name": "Zayn Jarvis",
+    "email": "zaynjarvis@gmail.com",
+    "url": "https://zaynjarvis.com"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ignore-path .gitignore --ext=js,jsx --fix ./src "
+  },
+  "dependencies": {
+    "@hughsk/fulltilt": "^0.7.1",
+    "@material-ui/core": "^3.9.2",
+    "autoprefixer": "^9.4.9",
+    "containers": "^0.0.1",
+    "firebase": "^5.8.6",
+    "formik": "^1.5.1",
+    "gyronorm": "^2.0.6",
+    "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.8",
+    "typeface-roboto": "^0.0.54"
+  },
+  "devDependencies": {
+    "babel-eslint": "9.0.0",
+    "cross-env": "^5.2.0",
+    "eslint": "5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-config-react-app": "^3.0.7",
+    "eslint-import-resolver-parcel": "^1.7.0",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.4",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.4"
+  },
+  "postcss": {
+    "modules": false,
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          ">1%",
+          "last 4 versions",
+          "Firefox ESR",
+          "not ie < 9"
+        ],
+        "flexbox": "no-2009"
+      }
+    }
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "settings": {
+      "import/resolver": {
+        "parcel": {
+          "rootDir": "src",
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      }
+    },
+    "extends": [
+      "react-app",
+      "airbnb",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "no-unused-vars": [
+        1,
+        {
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "react/prop-types": 0,
+      "import/no-absolute-path": 0,
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "semi": true,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "endOfLine": "lf"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "yarn run lint",
+      "git add --force"
+    ]
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "since 2017-06"
   ]
 }
