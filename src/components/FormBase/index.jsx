@@ -50,7 +50,7 @@ const FormBase = ({ config, callback, children, ...others }) => (
         )}
         {children}
         <StyledButton type='submit' variant='outlined' disabled={isSubmitting}>
-          Verify Identification
+          Verify Identity
         </StyledButton>
       </Form>
     )}
