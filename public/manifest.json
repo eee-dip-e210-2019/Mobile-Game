@@ -18,7 +18,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "/survey",
+  "start_url": ".",
   "display": "fullscreen",
   "orientation": "portrait",
   "theme_color": "#ffffff",
