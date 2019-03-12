@@ -6,24 +6,29 @@ const styles = {
   root: {},
   input: {},
   textFieldRoot: {
-    color: 'rgb(6, 185, 75)',
+    color: 'rgb(0, 235, 90)',
     fontFamily: 'inherit',
-    background: 'transparent',
+    transition: '10s',
+    // boxShadow: '0 0 0 1000px #222 inset',
+    // '&$focused': {
+    //   boxShadow: '0 0 0 1000px #222 inset',
+    // },
   },
   underline: {
     '&:after': {
-      borderBottom: '1px solid rgb(6, 185, 75)',
+      borderBottom: '1px solid rgb(0, 235, 90)',
     },
   },
   textFieldFormLabel: {
-    color: 'rgb(6, 185, 75)',
+    color: 'rgb(0, 235, 90)',
     '&$focused': {
       color: 'inherit',
     },
     fontFamily: 'inherit',
+    zIndex: 2,
   },
   focused: {
-    color: 'rgb(6, 185, 75)',
+    color: 'rgb(0, 235, 90)',
   },
 };
 

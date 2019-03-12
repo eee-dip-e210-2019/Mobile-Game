@@ -9,7 +9,7 @@ const StyledButton = withStyles({
   root: {
     background: '#444',
     borderRadius: 3,
-    color: 'rgb(6, 185, 75)',
+    color: 'rgb(0, 235, 90)',
     height: 48,
     padding: '0 30px',
     marginTop: '40px',
