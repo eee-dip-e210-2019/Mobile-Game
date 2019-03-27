@@ -17,6 +17,15 @@
   }
   .note {
     font-size: 14px;
+    color: #f33;
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  }
+  .success {
+    font-size: 14px;
+    color: lightgreen;
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
   }
   .debug {
     position: fixed;

@@ -8,6 +8,7 @@ const Cipher = ({ message }) => {
   const BETA_THRESHOLD = 30;
   const GAMMA_THRESHOLD = 70;
   const [text, setText] = React.useState('');
+  const [correct, setCorrect] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const setUpdate = React.useState(0)[1];
 
@@ -34,22 +35,34 @@ const Cipher = ({ message }) => {
       approximate(valueRef.current.alpha, ALPHA_THRESHOLD) &&
       approximate(valueRef.current.beta, BETA_THRESHOLD) &&
       approximate(valueRef.current.gamma, GAMMA_THRESHOLD)
-    )
+    ) {
+      setCorrect(true);
       return num;
+    }
+    setCorrect(false);
     return ((num - 65 + getRandomInt(13)) % 58) + 65;
   };
 
   const randomCipher = msg => {
-    const setence = msg.split(' ');
-    const newSentence = setence.map(word => {
-      const arr = word.split('');
-      const originalAsciiArray = arr.map(i => i.charCodeAt(0));
-      const resultAsciiArray = originalAsciiArray.map(i => asciiShift(i));
-      const resultTextArray = resultAsciiArray.map(i => String.fromCharCode(i));
-      const result = resultTextArray.join('');
-      return result;
-    });
-    setText(newSentence.join(' '));
+    const newMsg = msg
+      .map(v => {
+        return v
+          .split(' ')
+          .map(word => {
+            const arr = word.split('');
+            const originalAsciiArray = arr.map(i => i.charCodeAt(0));
+            const resultAsciiArray = originalAsciiArray.map(i => asciiShift(i));
+            const resultTextArray = resultAsciiArray.map(i =>
+              String.fromCharCode(i),
+            );
+            const result = resultTextArray.join('');
+            return result;
+          })
+          .join(' ');
+      })
+      .join('\n');
+
+    setText(newMsg);
   };
 
   React.useEffect(() => {
@@ -78,7 +91,7 @@ const Cipher = ({ message }) => {
 
     const refreshText = setInterval(() => {
       randomCipher(message);
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearInterval(getGyro);
@@ -92,7 +105,11 @@ const Cipher = ({ message }) => {
       onTouchStart={handlePress}
       onTouchEnd={handleRelease}
     >
-      <p className={styles.note}>{text}</p>
+      {correct ? (
+        <pre className={styles.success}>{text}</pre>
+      ) : (
+        <pre className={styles.note}>{text}</pre>
+      )}
       <Debug show={show}>
         <p>{`α : ${valueRef.current.alpha || ''}`}</p>
         <p>{`β : ${valueRef.current.beta || ''}`}</p>
