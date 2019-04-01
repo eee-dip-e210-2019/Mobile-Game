@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Debug from './debug';
 import styles from './style.scss';
 import '@hughsk/fulltilt/dist/fulltilt';
+import X from '../../assets/x.png';
 
 const Cipher = ({ message }) => {
   const ALPHA_THRESHOLD = 350;
@@ -21,7 +23,6 @@ const Cipher = ({ message }) => {
   const handlePress = () => {
     buttonPressTimer = setTimeout(() => setShow(true), 2000);
   };
-
   const handleRelease = () => {
     setShow(false);
     clearTimeout(buttonPressTimer);
@@ -87,7 +88,7 @@ const Cipher = ({ message }) => {
           randomCipher(message);
       }
       setUpdate(valueRef.current.alpha);
-    }, 100);
+    }, 1);
 
     const refreshText = setInterval(() => {
       randomCipher(message);
@@ -99,7 +100,7 @@ const Cipher = ({ message }) => {
     };
   }, []);
 
-  return valueRef.current.alpha ? (
+  return valueRef.current.alpha || valueRef.current.gamma ? (
     <div
       className={styles.cipher}
       onTouchStart={handlePress}
@@ -110,6 +111,35 @@ const Cipher = ({ message }) => {
       ) : (
         <pre className={styles.note}>{text}</pre>
       )}
+      <div className={styles.circleWrapper}>
+        <div className={styles.dangerCircle}>
+          <img
+            id='image'
+            src={X}
+            alt='x'
+            height='100px'
+            style={{
+              transform: `rotateZ(${valueRef.current.alpha -
+                350}deg) rotateX(${valueRef.current.beta -
+                30}deg) rotateY(${valueRef.current.gamma - 70}deg) `,
+            }}
+            alpha={valueRef.current.alpha}
+            beta={valueRef.current.beta}
+            gamma={valueRef.current.gamma}
+          />
+        </div>
+        <div className={styles.successCircle}>
+          <img
+            id='image'
+            src={X}
+            alt='x'
+            height='100px'
+            alpha={valueRef.current.alpha}
+            beta={valueRef.current.beta}
+            gamma={valueRef.current.gamma}
+          />
+        </div>
+      </div>
       <Debug show={show}>
         <p>{`α : ${valueRef.current.alpha || ''}`}</p>
         <p>{`β : ${valueRef.current.beta || ''}`}</p>

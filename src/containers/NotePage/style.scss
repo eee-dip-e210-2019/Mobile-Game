@@ -39,4 +39,24 @@
       color: #444;
     }
   }
+  .circleWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .successCircle {
+    height: 120px;
+    width: 120px;
+    border:3px solid #3ff4;
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .dangerCircle {
+    height: 120px;
+    width: 120px;
+    border:3px solid #f334;
+    border-radius: 50%;
+    padding: 10px;
+  }
 }
