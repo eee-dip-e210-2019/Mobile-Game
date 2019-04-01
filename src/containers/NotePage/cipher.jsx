@@ -99,7 +99,7 @@ const Cipher = ({ message }) => {
     };
   }, []);
 
-  return (
+  return valueRef.current.alpha ? (
     <div
       className={styles.cipher}
       onTouchStart={handlePress}
@@ -116,6 +116,11 @@ const Cipher = ({ message }) => {
         <p>{`γ : ${valueRef.current.gamma || ''}`}</p>
       </Debug>
     </div>
+  ) : (
+    <p className={styles.note}>
+      Only those who grant gyroscope permission to the browser deserve to know
+      the truth!
+    </p>
   );
 };
 export default Cipher;
