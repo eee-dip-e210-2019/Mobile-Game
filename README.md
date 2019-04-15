@@ -1,3 +1,3 @@
-# x-form
+# E210 - Mobile Game
 
-### PWA for EEE-DIP escape room project
+### PWA, SPA, gyroscope and firebase
